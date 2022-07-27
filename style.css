@@ -1,0 +1,755 @@
+@font-face {
+	font-family: "SFProText-Light";
+	src: url(fonts/SFProText-Light.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "SFProText-LightItalic";
+	src: url(fonts/SFProText-LightItalic.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "SFProText-Medium";
+	src: url(fonts/SFProText-Medium.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "SFProText-Regular";
+	src: url(fonts/SFProText-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "SFProText-Semibold";
+	src: url(fonts/SFProText-Semibold.ttf) format("truetype");
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	font-family: "SFProText-Medium";
+	color: white;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+ :root {
+	--z: 2;
+	--animPlaySt: running;
+	--sw: 1000px;
+	--sh: 1000px;
+	--windyZ: -4;
+	--bC: white;
+}
+
+#back {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -3;
+	margin: auto;
+	margin: 0;
+}
+
+.contBack {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	background-color: rgba(31, 29, 29, 0.4);
+}
+
+.dummy {
+	width: var(--sw);
+	height: var(--sh);
+}
+
+.subHead {
+	font-family: "SFProText-Medium";
+	width: 65vw;
+	margin: auto;
+	font-size: 32px;
+	padding-top: 15px;
+}
+
+.animation {
+	transition-duration: 0.6s;
+	opacity: 0;
+	animation: trial 0.3s forwards;
+	position: relative;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+.currentCard {
+	width: 90vw;
+	margin: auto;
+	padding-top: 20px;
+}
+
+.currentCard .cTempFlex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90px;
+	padding-right: 17px;
+}
+
+.currentCard .cTempFlex .cTempFlex-1 {
+	width: 70px;
+	height: 70px;
+	margin-right: 20px;
+}
+
+.currentCard .cTempFlex .cTempFlex-2 {
+	font-size: 80px;
+	margin-right: 20px;
+}
+
+.currentCard .cTempFlex .cTempFlex-3 .cTempFlex-31 {
+	font-size: 35px;
+	text-align: center;
+}
+
+.currentCard .cTempFlex .cTempFlex-3 .cTempFlex-32 .tempButton {
+	font-size: 20px;
+	color: rgb(223, 221, 221);
+	padding: 3px 6px;
+	background-color: transparent;
+	border: 2px solid transparent;
+	cursor: pointer;
+}
+
+.currentCard .desc {
+	font-family: "SFProText-Regular";
+	text-align: center;
+	font-size: 25px;
+}
+
+.currentCard .updated {
+	font-family: "SFProText-Light";
+	text-align: center;
+	font-size: 13px;
+	margin-top: 8px;
+	font-weight: 600;
+}
+
+.currentCard .cDetailsFlex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	margin: auto;
+	font-size: 14px;
+	margin-top: 12px;
+}
+
+.currentCard .cDetailsFlex .cDetailsFlex-1 {
+	margin-top: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	opacity: 0.9;
+}
+
+.currentCard .cDetailsFlex .cDetailsFlex-1 .cDetailsFlex-11 {
+	font-family: "SFProText-Regular";
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+}
+
+.currentCard .cDetailsFlex .cDetailsFlex-1 .cDetailsFlex-11 span {
+	font-size: 15.5px;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	font-size: 10px;
+	visibility: hidden;
+	width: 110px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 150%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+#addCont {
+	background-color: none;
+	white-space: wrap;
+	width: 65vw;
+	margin: auto;
+}
+
+#addCont .address {
+	font-family: "SFProText-Light";
+	font-size: 17px;
+	opacity: 0.85;
+	padding-left: 16px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.scrollmenuDaily,
+.scrollmenuHourly {
+	background-color: none;
+	overflow-x: scroll;
+	white-space: nowrap;
+	width: 65vw;
+	margin: auto;
+}
+
+.scrollmenuDaily .dailyCard {
+	background-color: transparent;
+	display: inline-block;
+	text-align: left;
+	font-size: 17px;
+	font-weight: 400;
+	width: 130px;
+	margin-top: 17px;
+	margin-bottom: 10px;
+	padding: 5px 14px 14px 14px;
+	text-decoration: none;
+	border: 2px solid transparent;
+	cursor: pointer;
+	transition-duration: 0.2s;
+}
+
+.dailyCard .temp {
+	word-spacing: 3px;
+	font-size: 18.5px;
+}
+
+.dailyCard img {
+	width: 35px;
+	height: 35px;
+	margin-top: 10px;
+}
+
+.dailyCard .deg,
+.hourlyCard .deg {
+	margin-top: 5px;
+}
+
+.dailyCard .deg div {
+	display: inline;
+	font-size: 24px;
+	margin-right: 9px;
+}
+
+.dailyCard .deg span {
+	font-size: 16px;
+	color: rgb(218, 216, 216);
+}
+
+.dailyCard .desc {
+	font-family: "SFProText-Regular";
+	font-size: 13.5px;
+	margin-top: 3px;
+	text-transform: capitalize;
+	opacity: 0.95;
+	overflow: hidden
+}
+
+.scrollmenuDaily .dailyCard:hover {
+	border: 2px solid rgba(209, 204, 204, 0.5);
+}
+
+.currentCard .cTempFlex .cTempFlex-3 .cTempFlex-32 .tempButton:hover {
+	border: 2px solid rgba(209, 204, 204, 0.5);
+	background-color: rgba(212, 205, 205, 0.2);
+}
+
+hr {
+	margin: auto;
+	border-width: 0;
+	height: 2px;
+	background-color: rgba(212, 205, 205, 0.6);
+}
+
+.hourlyCard {
+	background-color: transparent;
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: left;
+	font-size: 17px;
+	font-weight: 400;
+	width: 125px;
+	padding: 5px 14px 14px 14px;
+	text-decoration: none;
+	border: 2px solid transparent;
+}
+
+.hourlyCard img {
+	width: 35px;
+	height: 35px;
+	margin-top: 10px;
+}
+
+.hourlyCard .deg {
+	font-size: 24px;
+	margin-right: 9px;
+}
+
+.hourlyCard .desc {
+	font-family: "SFProText-Regular";
+	font-size: 13px;
+	overflow: hidden;
+	text-transform: capitalize;
+	opacity: 0.95;
+}
+
+.hourlyCard .rainWind {
+	margin-top: 9px;
+	font-size: 13.5px;
+	opacity: 0.7;
+}
+
+.hourlyCard .rainWind img {
+	height: 13px;
+	width: 13px;
+	opacity: 0.8;
+}
+
+.hourlyCard .hourCTime {
+	margin-top: 7px;
+	font-size: 17px;
+}
+
+#dayDetCont {
+	width: 65vw;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.FlexDayDet {
+	display: flex;
+	margin-top: 5px;
+	flex-wrap: wrap;
+}
+
+.FlexDayDet .FlexDayDet-1 {
+	padding-right: 20px;
+	margin-right: 20px;
+	min-width: 210px;
+	flex: 1;
+}
+
+.FlexDayDet .FlexDayDet-3 {
+	min-width: 290px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-11 {
+	margin-top: 9px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-12 {
+	margin-top: 20px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-23 {
+	margin-top: 20px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-11 img {
+	width: 45px;
+	height: 45px;
+	margin-right: 15px;
+}
+
+.FlexDayDet .FlexDayDet-2 .FlexDayDet-11 img {
+	width: 45px;
+	height: 45px;
+	margin-right: 15px;
+	padding-top: 5px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-23 img {
+	width: 50px;
+	height: 50px;
+	padding: 0px;
+	margin-top: 5px;
+	;
+}
+
+.FlexDayDet .FlexDayDet-3 .FlexDayDet-31 {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#moonPhase {
+	font-family: "SFProText-Light";
+	font-size: 14px;
+	padding-top: 4px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-11 .FlexDayDet-111 {
+	font-size: 17.2px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-11 .FlexDayDet-112 {
+	display: flex;
+	align-items: center;
+}
+
+.FlexDayDet .FlexDayDet-3 .FlexDayDet-31 div {
+	min-width: 135px;
+}
+
+.FlexDayDet .FlexDayDet-1 .FlexDayDet-11 .FlexDayDet-112 div {
+	font-size: 25px;
+	display: inline;
+	font-family: "SFProText-Light";
+}
+
+.FlexDayDet .FlexDayDet-3 .FlexDayDet-31 div div svg {
+	width: 130px;
+	height: 130px;
+	margin-top: 3px;
+}
+
+.FlexDayDet .FlexDayDet-3 .FlexDayDet-31 div div svg text {
+	fill: white;
+	font-size: 23px;
+	font-family: "SFProText-Light";
+}
+
+.mapCont #geocoder {
+	display: flex;
+	padding-top: 50px;
+	width: 65%;
+	justify-content: flex-end;
+	margin: auto;
+}
+
+#geocoder .mapboxgl-ctrl-geocoder .suggestions-wrapper .suggestions li a div {
+	color: #404040;
+}
+
+.mapboxgl-ctrl-geocoder {
+	min-width: 50%;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+	border: 4px solid grey;
+	background-color: #fff;
+	font-size: 20px;
+	min-width: 300px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+}
+
+.mapboxgl-ctrl-geocoder--input:focus {
+	background-color: #fff;
+}
+
+.mapCont {
+	width: 100vw;
+	height: 100vh;
+	background-color: #ece0dc;
+}
+
+.mapCont1 {
+	width: 90%;
+	height: 80%;
+	margin: auto;
+	padding-top: 2vh;
+	display: flex;
+}
+
+.mapCont2 {
+	position: relative;
+	padding-left: 50px;
+	width: 100%;
+	height: 100%;
+}
+
+#map {
+	border: 9px solid grey;
+	border-radius: 20px;
+	height: 90%;
+	width: 90%;
+	margin: auto;
+}
+
+#windy {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 0;
+	border: 9px solid grey;
+	border-radius: 20px;
+	position: absolute !important;
+	z-index: var(--windyZ);
+	width: 90%;
+	height: 90%;
+	margin: auto;
+}
+
+.mapButtonFlex {
+	width: 40%;
+	display: flex;
+	justify-content: space-around;
+	padding-top: 5vh;
+	margin: auto;
+}
+
+.mapButtonFlex button {
+	border: 4px solid grey;
+	border-radius: 10px;
+	padding: 8px;
+	color: grey;
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 20px;
+}
+
+#fav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#fav button {
+	border: 4px solid grey;
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	color: grey;
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 15px;
+}
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover,
+#favoritesCard1 button:hover {
+	color: #f5f5f5;
+}
+
+#fav button:hover {
+	background-color: white;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#main {
+	transition: margin-left .5s;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+
+#favoritesCard {
+	padding: 5px;
+	margin: 15px;
+	font-size: 13.5px;
+	background-color: #504d4d;
+	border-radius: 10px;
+}
+
+#addrfav {
+	padding: 8px;
+}
+
+#favoritesCard1 {
+	padding-top: 5px;
+	display: flex;
+	justify-content: space-around;
+	font-size: 12.5px;
+	opacity: 0.7;
+}
+
+#favoritesCard1 button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.loaderCont {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: grey;
+	z-index: var(--z);
+}
+
+.loader,
+.loader:before,
+.loader:after {
+	background: #ece0dc;
+	-webkit-animation: load1 1s infinite ease-in-out;
+	animation: load1 1s infinite ease-in-out;
+	width: 1em;
+	height: 4em;
+	animation-play-state: var(--animPlaySt);
+}
+
+.loader {
+	color: #ece0dc;
+	text-indent: -9999em;
+	margin: 88px auto;
+	position: relative;
+	font-size: 11px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+	position: absolute;
+	top: 0;
+	content: '';
+}
+
+.loader:before {
+	left: -1.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.loader:after {
+	left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+
+@keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+
+ ::-webkit-scrollbar {
+	height: 3.5px;
+	width: 3.2px;
+}
+
+ ::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+body::-webkit-scrollbar-track {
+	background: white;
+}
+
+ ::-webkit-scrollbar-thumb {
+	background: rgb(190, 186, 186);
+	border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb {
+	background: #555;
+}
+
+@keyframes trial {
+	from {
+		opacity: 0;
+		top: 70px
+	}
+	to {
+		opacity: 1;
+		top: 0px
+	}
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WWW - World Wide Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Provides weather information from across the world.">
+  <meta name="keywords" content="weather, detail, world, temperature">
+  <meta name="author" content="Manasa Pabba">
+  <link rel="shortcut icon" href="Images/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body id="main">
+  <div class="mapCont">
+    <div id="geocoder"></div>
+    <div class="mapCont1">
+      <div class="mapCont2">
+        <div id="map"></div>
+        <div id="windy"></div>
+        <div class="mapButtonFlex">
+          <button id="mapButton1" onclick="mapButton1()" style="background-color: white;">Normal Map</button>
+          <button id="mapButton2" onclick="mapButton2()">WindMap</button>
+        </div>
+      </div>
+      <div id=fav>
+        <button id="favButton1" onclick="favButton1()">addToFavorites</button>
+        <button id="favButton2" onclick="favButton2()">Favorites</button>
+      </div>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="favorites">
+    </div>
+  </div>
+
+  <a href="#currentCont" style="visibility: hidden;" id="scrolling"></a>
+  <img id="back" src=''>
+  <div class="contBack">
+    <div class="loaderCont">
+      <div class="loader"></div>
+    </div>
+    <div id="currentCont">
+      <div class="currentCard" style="visibility: hidden;">
+        <div class="dummy"></div>
+      </div>
+    </div>
+    <div id="addCont">
+    </div>
+    <div id="dailyMenuCont">
+    </div>
+    <div id="hourlyMenuCont">
+    </div>
+    <div id="dayDetCont">
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyBGASSqsuks4-5oWVU0ef7ix0AOqm1Asm0",
+        authDomain: "weather-app-72411.firebaseapp.com",
+        databaseURL: "https://weather-app-72411-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "weather-app-72411",
+        storageBucket: "weather-app-72411.appspot.com",
+        messagingSenderId: "830917857698",
+        appId: "1:830917857698:web:ebf90e4a17ca1afed4a2fb"
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+    </script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
